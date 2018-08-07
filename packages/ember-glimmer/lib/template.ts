@@ -1,7 +1,7 @@
+import { getOwner } from '@ember/-container';
 import { Template } from '@glimmer/interfaces';
 import { LazyCompiler, templateFactory, TemplateFactory } from '@glimmer/opcode-compiler';
 import { SerializedTemplateWithLazyBlock } from '@glimmer/wire-format';
-import { getOwner } from 'container';
 import { OwnedTemplateMeta, StaticTemplateMeta } from 'ember-views';
 
 export type StaticTemplate = SerializedTemplateWithLazyBlock<StaticTemplateMeta>;

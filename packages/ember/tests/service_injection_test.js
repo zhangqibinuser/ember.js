@@ -1,4 +1,4 @@
-import { getOwner } from 'container';
+import { getOwner } from '@ember/-container';
 import Controller from '@ember/controller';
 import Service, { inject as injectService } from '@ember/service';
 import { _ProxyMixin } from 'ember-runtime';

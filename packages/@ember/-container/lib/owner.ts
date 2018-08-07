@@ -49,7 +49,7 @@ export const OWNER = symbol('OWNER');
   ```app/components/play-audio.js
   import Component from '@ember/component';
   import { computed } from '@ember/object';
-  import { getOwner } from 'container';
+  import { getOwner } from '@ember/-container';
 
   // Usage:
   //

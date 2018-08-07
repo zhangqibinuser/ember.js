@@ -1,4 +1,4 @@
-import { setOwner } from 'container';
+import { setOwner } from '@ember/-container';
 import HashLocation from '../../lib/location/hash_location';
 import HistoryLocation from '../../lib/location/history_location';
 import AutoLocation from '../../lib/location/auto_location';

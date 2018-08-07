@@ -1,4 +1,4 @@
-import { context } from 'ember-environment';
+import { context } from '@ember/-env';
 import { run } from '@ember/runloop';
 import { get, setNamespaceSearchDisabled } from 'ember-metal';
 import { guidFor } from '@ember/-utils';

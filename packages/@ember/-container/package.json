@@ -1,0 +1,5 @@
+{
+  "name": "container",
+  "version": "0.0.0",
+  "description": "Dependency injection in Ember"
+}

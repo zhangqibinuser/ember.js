@@ -3,7 +3,6 @@
 const MergeTrees = require('broccoli-merge-trees');
 const Funnel = require('broccoli-funnel');
 const Rollup = require('broccoli-rollup');
-const Debug = require('broccoli-debug');
 const babelHelpers = require('./broccoli/babel-helpers');
 const bootstrapModule = require('./broccoli/bootstrap-modules');
 const concatBundle = require('./broccoli/concat-bundle');
@@ -15,6 +14,10 @@ const stripForProd = toES5.stripForProd;
 const minify = require('./broccoli/minify');
 const rename = require('./broccoli/rename');
 const { stripIndent } = require('common-tags');
+const debugMacros = require('./broccoli/babel/debug-macros');
+const Babel = require('broccoli-babel-transpiler');
+const PackageJSONWriter = require('./broccoli/package-json-writer');
+
 const {
   routerES,
   jquery,
@@ -89,10 +92,6 @@ module.exports = function() {
   let packagesESRollup = new MergeTrees([
     new Funnel(packagesES, {
       exclude: [
-        'container/index.js',
-        'container/lib/**',
-        'ember-environment/index.js',
-        'ember-environment/lib/**',
         'ember-browser-environment/index.js',
         'ember-browser-environment/lib/**',
         'ember-glimmer/index.js',
@@ -101,17 +100,21 @@ module.exports = function() {
         'ember-metal/lib/**',
       ],
     }),
-    rollupPackage(packagesES, 'container'),
-    rollupPackage(packagesES, 'ember-environment'),
     rollupPackage(packagesES, 'ember-browser-environment'),
     rollupPackage(packagesES, 'ember-glimmer'),
     rollupPackage(packagesES, 'ember-metal'),
   ]);
 
   let standalonePackages = new MergeTrees([
-    standalonePackage(packagesES, '@ember/polyfills'),
+    standalonePackage(packagesES, '@ember/-container'),
+    standalonePackage(packagesES, '@ember/-env'),
     standalonePackage(packagesES, '@ember/-utils'),
-    standalonePackage(packagesES, 'container'),
+    standalonePackage(packagesES, '@ember/canary-features'),
+    standalonePackage(packagesES, '@ember/debug'),
+    standalonePackage(packagesES, '@ember/deprecated-features'),
+    standalonePackage(packagesES, '@ember/error'),
+    standalonePackage(packagesES, '@ember/polyfills'),
+    standalonePackage(packagesES, 'ember-browser-environment'),
   ]);
 
   // ES5
@@ -202,8 +205,9 @@ module.exports = function() {
           '@ember/polyfills/lib/**',
           '@ember/-utils/index.js',
           '@ember/-utils/lib/**',
+          '@ember/-env/index.js',
+          '@ember/-env/lib/**',
           'ember/version.js',
-          'ember-environment.js',
           'ember-browser-environment.js',
           'ember-template-compiler/**',
         ],
@@ -347,28 +351,35 @@ function standalonePackage(packagesES, name) {
     destDir: name,
   });
 
-  let rolledUp = new Rollup(rollupRestrictedInput, {
+  let debugStripped = new Babel(rollupRestrictedInput, {
+    sourceMap: true,
+    plugins: [debugMacros({ isDebug: ENV !== 'production' })],
+  });
+
+  let rolledUp = new Rollup(debugStripped, {
     annotation: `Standalone Package ${name}`,
     rollup: {
       input: `${name}/index.js`,
       output: [
         {
-          file: `packages/${name}/dist/modules/index.js`,
+          file: `node_modules/${name}/dist/browser.js`,
           format: 'es',
         },
         {
-          file: `packages/${name}/dist/commonjs/index.js`,
+          file: `node_modules/${name}/dist/index.js`,
           format: 'cjs',
         },
       ],
     },
   });
 
-  let pkgJSON = new Funnel(new Debug(packagesES, 'packagesES'), {
+  let pkgJSON = new Funnel(packagesES, {
     srcDir: name,
     include: ['package.json'],
-    destDir: `packages/${name}`,
+    destDir: `node_modules/${name}`,
   });
+
+  pkgJSON = new PackageJSONWriter(pkgJSON);
 
   return new MergeTrees([rolledUp, pkgJSON]);
 }

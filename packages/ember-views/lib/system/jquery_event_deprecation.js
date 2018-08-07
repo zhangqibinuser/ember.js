@@ -1,6 +1,6 @@
 /* global Proxy */
 import { deprecate } from '@ember/debug';
-import { global } from 'ember-environment';
+import { global } from '@ember/-env';
 import { HAS_NATIVE_PROXY } from '@ember/-utils';
 import { DEBUG } from '@glimmer/env';
 

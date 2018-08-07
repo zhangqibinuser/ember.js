@@ -4,8 +4,8 @@
 
 export { getStrings as _getStrings, setStrings as _setStrings } from './lib/string_registry';
 
+import { ENV } from '@ember/-env';
 import { Cache } from '@ember/-utils';
-import { ENV } from 'ember-environment';
 import { getString } from './lib/string_registry';
 
 const STRING_DASHERIZE_REGEXP = /[ _]/g;

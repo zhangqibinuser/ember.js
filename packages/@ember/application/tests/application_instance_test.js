@@ -2,7 +2,7 @@ import Engine from '@ember/engine';
 import Application from '@ember/application';
 import ApplicationInstance from '@ember/application/instance';
 import { run } from '@ember/runloop';
-import { privatize as P } from 'container';
+import { privatize as P } from '@ember/-container';
 import { factory } from 'internal-test-helpers';
 import { Object as EmberObject } from 'ember-runtime';
 import { moduleFor, AbstractTestCase as TestCase } from 'internal-test-helpers';

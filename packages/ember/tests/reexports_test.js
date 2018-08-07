@@ -47,13 +47,13 @@ moduleFor(
 );
 
 let allExports = [
-  // ember-environment
-  ['ENV', 'ember-environment', { get: 'getENV' }],
-  ['lookup', 'ember-environment', { get: 'getLookup', set: 'setLookup' }],
+  // @ember/-env
+  ['ENV', '@ember/-env', { get: 'getENV' }],
+  ['lookup', '@ember/-env', { get: 'getLookup', set: 'setLookup' }],
 
   // @ember/-utils
-  ['getOwner', 'container', 'getOwner'],
-  ['setOwner', 'container', 'setOwner'],
+  ['getOwner', '@ember/-container', 'getOwner'],
+  ['setOwner', '@ember/-container', 'setOwner'],
   ['assign', '@ember/polyfills'],
   ['GUID_KEY', '@ember/-utils'],
   ['uuid', '@ember/-utils'],
@@ -67,8 +67,8 @@ let allExports = [
   ['NAME_KEY', '@ember/-utils'],
 
   // container
-  ['Registry', 'container', 'Registry'],
-  ['Container', 'container', 'Container'],
+  ['Registry', '@ember/-container', 'Registry'],
+  ['Container', '@ember/-container', 'Container'],
 
   // @ember/debug
   ['deprecateFunc', '@ember/debug'],

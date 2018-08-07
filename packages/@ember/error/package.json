@@ -1,0 +1,5 @@
+{
+  "name": "@ember/error",
+  "version": "0.0.0",
+  "description": "Contains Ember-specific Error subclasses"
+}

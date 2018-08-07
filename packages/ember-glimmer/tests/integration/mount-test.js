@@ -1,4 +1,4 @@
-import { getOwner } from 'container';
+import { getOwner } from '@ember/-container';
 import { moduleFor, ApplicationTest, RenderingTest } from '../utils/test-case';
 import { compile, Component } from '../utils/helpers';
 import Controller from '@ember/controller';

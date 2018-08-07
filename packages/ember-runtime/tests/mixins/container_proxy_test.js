@@ -1,5 +1,5 @@
-import { OWNER, getOwner } from 'container';
-import { Container, Registry } from 'container';
+import { OWNER, getOwner } from '@ember/-container';
+import { Container, Registry } from '@ember/-container';
 import ContainerProxy from '../../lib/mixins/container_proxy';
 import EmberObject from '../../lib/system/object';
 import { run, schedule } from '@ember/runloop';

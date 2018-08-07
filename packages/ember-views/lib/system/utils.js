@@ -1,4 +1,4 @@
-import { getOwner } from 'container';
+import { getOwner } from '@ember/-container';
 /* globals Element */
 import { guidFor, symbol } from '@ember/-utils';
 

@@ -1,9 +1,9 @@
 import require, { has } from 'require';
 
-import { getENV, getLookup, setLookup, ENV, context } from 'ember-environment';
+import { getENV, getLookup, setLookup, ENV, context } from '@ember/-env';
 import { IS_NODE, module } from 'node-module';
 import * as utils from '@ember/-utils';
-import { Registry, Container } from 'container';
+import { Registry, Container } from '@ember/-container';
 import * as instrumentation from '@ember/instrumentation';
 import { deleteMeta, meta } from 'ember-meta';
 import * as metal from 'ember-metal';
@@ -116,7 +116,7 @@ import * as extensionSupport from 'ember-extension-support';
 import EmberError from '@ember/error';
 import * as runloop from '@ember/runloop';
 import { getOnerror, setOnerror } from 'ember-error-handling';
-import { getOwner, setOwner } from 'container';
+import { getOwner, setOwner } from '@ember/-container';
 import Application, { onLoad, runLoadHooks } from '@ember/application';
 import Resolver from '@ember/application/globals-resolver';
 import ApplicationInstance from '@ember/application/instance';
@@ -133,7 +133,7 @@ import {
   EMBER_EXTEND_PROTOTYPES,
 } from '@ember/deprecated-features';
 
-// ****ember-environment****
+// ****@ember/-env****
 
 const Ember = (typeof context.imports.Ember === 'object' && context.imports.Ember) || {};
 

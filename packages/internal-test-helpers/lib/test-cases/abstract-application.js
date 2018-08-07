@@ -1,5 +1,5 @@
 import { compile } from 'ember-template-compiler';
-import { ENV } from 'ember-environment';
+import { ENV } from '@ember/-env';
 import AbstractTestCase from './abstract';
 import { runDestroy } from '../run';
 

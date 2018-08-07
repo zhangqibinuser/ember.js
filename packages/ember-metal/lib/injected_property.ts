@@ -1,6 +1,6 @@
+import { getOwner } from '@ember/-container';
 import { EMBER_MODULE_UNIFICATION } from '@ember/canary-features';
 import { assert } from '@ember/debug';
-import { getOwner } from 'container';
 import { descriptorFor } from 'ember-meta';
 import { ComputedProperty } from './computed';
 

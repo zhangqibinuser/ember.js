@@ -1,0 +1,5 @@
+{
+  "name": "ember-browser-environment",
+  "version": "0.0.0",
+  "description": "Utilities for detecting and interacting with browser/DOM environments"
+}

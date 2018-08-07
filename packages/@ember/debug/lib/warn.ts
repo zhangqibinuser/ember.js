@@ -1,5 +1,5 @@
+import { ENV } from '@ember/-env';
 import { DEBUG } from '@glimmer/env';
-import { ENV } from 'ember-environment';
 
 import { assert } from '../index';
 import deprecate from './deprecate';

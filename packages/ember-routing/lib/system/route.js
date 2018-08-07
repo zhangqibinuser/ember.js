@@ -1,5 +1,5 @@
 import { ROUTER_ROUTER } from '@ember/deprecated-features';
-import { getOwner } from 'container';
+import { getOwner } from '@ember/-container';
 import { assign } from '@ember/polyfills';
 import { once } from '@ember/runloop';
 import { get, set, getProperties, setProperties, computed, isEmpty } from 'ember-metal';

@@ -1,4 +1,4 @@
-import { context } from 'ember-environment';
+import { context } from '@ember/-env';
 import { set, trySet, get } from '../..';
 import { moduleFor, AbstractTestCase } from 'internal-test-helpers';
 

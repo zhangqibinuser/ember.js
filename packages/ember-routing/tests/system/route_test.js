@@ -1,4 +1,4 @@
-import { setOwner } from 'container';
+import { setOwner } from '@ember/-container';
 import { runDestroy, buildOwner, moduleFor, AbstractTestCase } from 'internal-test-helpers';
 import Service, { inject as injectService } from '@ember/service';
 import { Object as EmberObject } from 'ember-runtime';

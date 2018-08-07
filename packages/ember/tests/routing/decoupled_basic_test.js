@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
-import { getOwner } from 'container';
+import { getOwner } from '@ember/-container';
 import RSVP from 'rsvp';
 import { compile } from 'ember-template-compiler';
-import { ENV } from 'ember-environment';
+import { ENV } from '@ember/-env';
 import { Route, NoneLocation, HistoryLocation } from 'ember-routing';
 import Controller from '@ember/controller';
 import { Object as EmberObject, A as emberA } from 'ember-runtime';

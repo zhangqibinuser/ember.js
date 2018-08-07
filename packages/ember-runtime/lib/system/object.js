@@ -2,8 +2,8 @@
 @module @ember/object
 */
 
-import { FACTORY_FOR } from 'container';
-import { OWNER } from 'container';
+import { FACTORY_FOR } from '@ember/-container';
+import { OWNER } from '@ember/-container';
 import { symbol, setName } from '@ember/-utils';
 import { addListener } from 'ember-metal';
 import CoreObject from './core_object';

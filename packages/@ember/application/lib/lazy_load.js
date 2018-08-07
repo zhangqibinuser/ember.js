@@ -1,6 +1,6 @@
 /*globals CustomEvent */
 
-import { ENV } from 'ember-environment';
+import { ENV } from '@ember/-env';
 import { window } from 'ember-browser-environment';
 
 /**

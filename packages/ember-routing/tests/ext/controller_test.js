@@ -1,4 +1,4 @@
-import { setOwner } from 'container';
+import { setOwner } from '@ember/-container';
 import Controller from '@ember/controller';
 import { buildOwner, moduleFor, AbstractTestCase } from 'internal-test-helpers';
 

@@ -1,0 +1,5 @@
+{
+  "name": "@ember/deprecated-features",
+  "version": "0.0.0",
+  "description": "Dependency injection in Ember"
+}

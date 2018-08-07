@@ -1,6 +1,6 @@
 /*globals EmberDev */
 import VERSION from 'ember/version';
-import { ENV, context } from 'ember-environment';
+import { ENV, context } from '@ember/-env';
 import { libraries } from 'ember-metal';
 import { getDebugFunction, setDebugFunction } from '@ember/debug';
 import Application from '..';
@@ -10,7 +10,7 @@ import { _loaded } from '@ember/application';
 import Controller from '@ember/controller';
 import { Object as EmberObject } from 'ember-runtime';
 import { setTemplates } from 'ember-glimmer';
-import { privatize as P } from 'container';
+import { privatize as P } from '@ember/-container';
 import { assign } from '@ember/polyfills';
 import {
   moduleFor,

@@ -1,9 +1,9 @@
+import { ENV } from '@ember/-env';
 import { lookupDescriptor, symbol, toString } from '@ember/-utils';
 import { assert } from '@ember/debug';
 import { BINDING_SUPPORT } from '@ember/deprecated-features';
 import { DEBUG } from '@glimmer/env';
 import { Tag } from '@glimmer/reference';
-import { ENV } from 'ember-environment';
 
 const objectPrototype = Object.prototype;
 

@@ -2,7 +2,7 @@
   @module @ember/object
 */
 
-import { FACTORY_FOR } from 'container';
+import { FACTORY_FOR } from '@ember/-container';
 import { BINDING_SUPPORT } from '@ember/deprecated-features';
 import { assign } from '@ember/polyfills';
 import {
@@ -30,7 +30,7 @@ import {
 import ActionHandler from '../mixins/action_handler';
 import { assert } from '@ember/debug';
 import { DEBUG } from '@glimmer/env';
-import { ENV } from 'ember-environment';
+import { ENV } from '@ember/-env';
 
 const reopen = Mixin.prototype.reopen;
 

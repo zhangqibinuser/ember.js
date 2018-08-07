@@ -27,7 +27,7 @@ let containerProxyMixin = {
    Example:
 
    ```
-   import { getOwner } from 'container';
+   import { getOwner } from '@ember/-container';
 
    let owner = getOwner(this);
 
@@ -121,7 +121,7 @@ let containerProxyMixin = {
   For example:
 
   ```javascript
-  import { getOwner } from 'container';
+  import { getOwner } from '@ember/-container';
 
   let owner = getOwner(otherInstance);
   // the owner is commonly the `applicationInstance`, and can be accessed via
