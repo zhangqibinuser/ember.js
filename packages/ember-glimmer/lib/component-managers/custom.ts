@@ -16,7 +16,7 @@ import {
   WithStaticLayout,
 } from '@glimmer/runtime';
 import { Destroyable } from '@glimmer/util';
-import { Factory } from 'ember-owner';
+import { Factory } from 'container';
 import { OwnedTemplateMeta } from 'ember-views';
 
 import Environment from '../environment';

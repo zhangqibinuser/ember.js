@@ -6,7 +6,6 @@
     "extension": ".js,.ts",
     "paths": [
       "packages/ember/lib",
-      "packages/ember-utils/lib",
       "packages/ember-console/lib",
       "packages/ember-debug/lib",
       "packages/ember-metal/lib",

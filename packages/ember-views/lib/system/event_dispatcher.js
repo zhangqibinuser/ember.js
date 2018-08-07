@@ -1,4 +1,4 @@
-import { getOwner } from 'ember-owner';
+import { getOwner } from 'container';
 /**
 @module ember
 */

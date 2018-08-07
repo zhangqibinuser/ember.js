@@ -1,4 +1,4 @@
-import { getOwner } from 'ember-owner';
+import { getOwner } from 'container';
 import { assign } from '@ember/polyfills';
 import { cancel, once, run, scheduleOnce, schedule } from '@ember/runloop';
 import { get, set, defineProperty, computed } from 'ember-metal';

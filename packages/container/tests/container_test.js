@@ -1,7 +1,6 @@
-import { OWNER } from 'ember-owner';
 import { assign } from '@ember/polyfills';
 import { EMBER_MODULE_UNIFICATION } from '@ember/canary-features';
-import { Registry } from '..';
+import { Registry, OWNER } from '..';
 import { factory, moduleFor, AbstractTestCase } from 'internal-test-helpers';
 
 moduleFor(

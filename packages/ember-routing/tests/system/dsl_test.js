@@ -1,4 +1,4 @@
-import { setOwner } from 'ember-owner';
+import { setOwner } from 'container';
 import EmberRouter from '../../lib/system/router';
 import { buildOwner, moduleFor, AbstractTestCase } from 'internal-test-helpers';
 

@@ -1,0 +1,16 @@
+{
+  "name": "@ember/-utils",
+  "version": "0.0.0",
+  "description": "Internal utilities shared by Ember packages",
+  "homepage": "https://emberjs.com/",
+  "bugs": {
+    "url": "https://github.com/emberjs/ember.js/issues"
+  },
+  "license": "MIT",
+  "main": "dist/commonjs/index.js",
+  "browser": "dist/modules/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emberjs/ember.js.git"
+  }
+}

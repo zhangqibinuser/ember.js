@@ -29,7 +29,7 @@ export interface Owner {
   hasRegistration(name: string, options?: LookupOptions): boolean;
 }
 
-import { symbol } from 'ember-utils';
+import { symbol } from '@ember/-utils';
 
 export const OWNER = symbol('OWNER');
 
@@ -49,7 +49,7 @@ export const OWNER = symbol('OWNER');
   ```app/components/play-audio.js
   import Component from '@ember/component';
   import { computed } from '@ember/object';
-  import { getOwner } from '@ember/application';
+  import { getOwner } from 'container';
 
   // Usage:
   //

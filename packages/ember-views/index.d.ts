@@ -1,6 +1,6 @@
 import { Simple, Template } from '@glimmer/interfaces';
 import { Opaque } from '@glimmer/util';
-import { Factory, Owner } from 'ember-owner';
+import { Factory, Owner } from 'container';
 
 export interface StaticTemplateMeta {
   moduleName: string;

@@ -10,9 +10,8 @@ import {
 } from '@glimmer/interfaces';
 import { LazyCompiler, Macros, PartialDefinition } from '@glimmer/opcode-compiler';
 import { getDynamicVar, Helper, ModifierManager } from '@glimmer/runtime';
-import { privatize as P } from 'container';
+import { LookupOptions, Owner, privatize as P, setOwner } from 'container';
 import { ENV } from 'ember-environment';
-import { LookupOptions, Owner, setOwner } from 'ember-owner';
 import { lookupComponent, lookupPartial, OwnedTemplateMeta } from 'ember-views';
 import CompileTimeLookup from './compile-time-lookup';
 import { CurlyComponentDefinition } from './component-managers/curly';

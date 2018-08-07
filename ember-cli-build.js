@@ -3,6 +3,7 @@
 const MergeTrees = require('broccoli-merge-trees');
 const Funnel = require('broccoli-funnel');
 const Rollup = require('broccoli-rollup');
+const Debug = require('broccoli-debug');
 const babelHelpers = require('./broccoli/babel-helpers');
 const bootstrapModule = require('./broccoli/bootstrap-modules');
 const concatBundle = require('./broccoli/concat-bundle');
@@ -98,8 +99,6 @@ module.exports = function() {
         'ember-glimmer/lib/**',
         'ember-metal/index.js',
         'ember-metal/lib/**',
-        'ember-utils/index.js',
-        'ember-utils/lib/**',
       ],
     }),
     rollupPackage(packagesES, 'container'),
@@ -107,7 +106,12 @@ module.exports = function() {
     rollupPackage(packagesES, 'ember-browser-environment'),
     rollupPackage(packagesES, 'ember-glimmer'),
     rollupPackage(packagesES, 'ember-metal'),
-    rollupPackage(packagesES, 'ember-utils'),
+  ]);
+
+  let standalonePackages = new MergeTrees([
+    standalonePackage(packagesES, '@ember/polyfills'),
+    standalonePackage(packagesES, '@ember/-utils'),
+    standalonePackage(packagesES, 'container'),
   ]);
 
   // ES5
@@ -196,11 +200,12 @@ module.exports = function() {
           '@ember/error/index.js',
           '@ember/polyfills/index.js',
           '@ember/polyfills/lib/**',
+          '@ember/-utils/index.js',
+          '@ember/-utils/lib/**',
           'ember/version.js',
           'ember-environment.js',
           'ember-browser-environment.js',
           'ember-template-compiler/**',
-          'ember-utils.js',
         ],
       }),
       bootstrapModule('ember-template-compiler', 'umd'),
@@ -300,6 +305,7 @@ module.exports = function() {
 
   return new MergeTrees([
     new Funnel(es, { destDir: 'es' }),
+    standalonePackages,
     pkgAndTestESBundleDebug,
     ...trees,
     emberTestsBundle,
@@ -329,6 +335,42 @@ function glimmerDependenciesES() {
     }
   }
   return glimmerTrees(glimmerEntries);
+}
+
+function standalonePackage(packagesES, name) {
+  // this prevents broccoli-rollup from "seeing" changes in
+  // its input that are unrelated to what we are building
+  // and therefore noop on rebuilds...
+
+  let rollupRestrictedInput = new Funnel(packagesES, {
+    srcDir: name,
+    destDir: name,
+  });
+
+  let rolledUp = new Rollup(rollupRestrictedInput, {
+    annotation: `Standalone Package ${name}`,
+    rollup: {
+      input: `${name}/index.js`,
+      output: [
+        {
+          file: `packages/${name}/dist/modules/index.js`,
+          format: 'es',
+        },
+        {
+          file: `packages/${name}/dist/commonjs/index.js`,
+          format: 'cjs',
+        },
+      ],
+    },
+  });
+
+  let pkgJSON = new Funnel(new Debug(packagesES, 'packagesES'), {
+    srcDir: name,
+    include: ['package.json'],
+    destDir: `packages/${name}`,
+  });
+
+  return new MergeTrees([rolledUp, pkgJSON]);
 }
 
 function rollupPackage(packagesES, name) {

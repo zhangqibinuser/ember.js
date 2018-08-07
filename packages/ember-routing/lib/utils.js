@@ -1,4 +1,4 @@
-import { getOwner } from 'ember-owner';
+import { getOwner } from 'container';
 import { assign } from '@ember/polyfills';
 import { get } from 'ember-metal';
 import EmberError from '@ember/error';

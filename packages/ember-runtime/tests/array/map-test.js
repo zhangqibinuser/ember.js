@@ -1,4 +1,4 @@
-import { guidFor } from 'ember-utils';
+import { guidFor } from '@ember/-utils';
 import { AbstractTestCase } from 'internal-test-helpers';
 import { runArrayTests } from '../helpers/array';
 import { get } from 'ember-metal';

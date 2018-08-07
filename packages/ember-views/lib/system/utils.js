@@ -1,6 +1,6 @@
-import { getOwner } from 'ember-owner';
+import { getOwner } from 'container';
 /* globals Element */
-import { guidFor, symbol } from 'ember-utils';
+import { guidFor, symbol } from '@ember/-utils';
 
 /**
 @module ember

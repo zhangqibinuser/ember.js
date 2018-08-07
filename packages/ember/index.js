@@ -2,7 +2,7 @@ import require, { has } from 'require';
 
 import { getENV, getLookup, setLookup, ENV, context } from 'ember-environment';
 import { IS_NODE, module } from 'node-module';
-import * as utils from 'ember-utils';
+import * as utils from '@ember/-utils';
 import { Registry, Container } from 'container';
 import * as instrumentation from '@ember/instrumentation';
 import { deleteMeta, meta } from 'ember-meta';
@@ -116,7 +116,7 @@ import * as extensionSupport from 'ember-extension-support';
 import EmberError from '@ember/error';
 import * as runloop from '@ember/runloop';
 import { getOnerror, setOnerror } from 'ember-error-handling';
-import { getOwner, setOwner } from 'ember-owner';
+import { getOwner, setOwner } from 'container';
 import Application, { onLoad, runLoadHooks } from '@ember/application';
 import Resolver from '@ember/application/globals-resolver';
 import ApplicationInstance from '@ember/application/instance';
@@ -192,7 +192,7 @@ Ember.MapWithDefault = MapWithDefault;
 Ember.assign = assign;
 Ember.merge = merge;
 
-// ****ember-utils****
+// ****@ember/-utils****
 Ember.generateGuid = utils.generateGuid;
 Ember.GUID_KEY = utils.GUID_KEY;
 Ember.guidFor = utils.guidFor;

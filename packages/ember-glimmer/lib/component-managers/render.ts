@@ -4,7 +4,7 @@ import { CONSTANT_TAG, Tag, VersionedPathReference } from '@glimmer/reference';
 import { Arguments, ComponentDefinition, Invocation, WithStaticLayout } from '@glimmer/runtime';
 
 import { DEBUG } from '@glimmer/env';
-import { Owner } from 'ember-owner';
+import { Owner } from 'container';
 import { generateController, generateControllerFactory } from 'ember-routing';
 import { OwnedTemplateMeta } from 'ember-views';
 import Environment from '../environment';
