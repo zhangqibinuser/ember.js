@@ -1,6 +1,6 @@
-import { get, set } from 'ember-metal';
+import { get, set } from '@ember/-metal';
 import { assert } from '@ember/debug';
-import { Object as EmberObject } from 'ember-runtime';
+import { Object as EmberObject } from '@ember/-runtime';
 
 /**
 @module @ember/routing

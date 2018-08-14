@@ -1,8 +1,8 @@
 import Controller from '@ember/controller';
-import { A as emberA } from 'ember-runtime';
+import { A as emberA } from '@ember/-runtime';
 import { Route } from 'ember-routing';
 import { run } from '@ember/runloop';
-import { computed } from 'ember-metal';
+import { computed } from '@ember/-metal';
 import { QueryParamTestCase, moduleFor } from 'internal-test-helpers';
 
 class ModelDependentQPTestCase extends QueryParamTestCase {

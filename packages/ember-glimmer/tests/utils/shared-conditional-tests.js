@@ -1,14 +1,14 @@
 import { assign } from '@ember/polyfills';
 import { applyMixins } from './abstract-test-case';
 import { RenderingTest } from './test-case';
-import { get, set } from 'ember-metal';
+import { get, set } from '@ember/-metal';
 import {
   Object as EmberObject,
   ObjectProxy,
   A as emberA,
   ArrayProxy,
   removeAt,
-} from 'ember-runtime';
+} from '@ember/-runtime';
 import { Component } from './helpers';
 
 class AbstractConditionalsTest extends RenderingTest {

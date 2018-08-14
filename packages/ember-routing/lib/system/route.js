@@ -2,11 +2,11 @@ import { ROUTER_ROUTER } from '@ember/deprecated-features';
 import { getOwner } from '@ember/-container';
 import { assign } from '@ember/polyfills';
 import { once } from '@ember/runloop';
-import { get, set, getProperties, setProperties, computed, isEmpty } from 'ember-metal';
+import { get, set, getProperties, setProperties, computed, isEmpty } from '@ember/-metal';
 import { assert, deprecate, info, isTesting } from '@ember/debug';
 import { DEBUG } from '@glimmer/env';
 import { classify } from '@ember/string';
-import { typeOf, Object as EmberObject, A as emberA, Evented, ActionHandler } from 'ember-runtime';
+import { typeOf, Object as EmberObject, A as emberA, Evented, ActionHandler } from '@ember/-runtime';
 import generateController from './generate_controller';
 import {
   stashParamNames,

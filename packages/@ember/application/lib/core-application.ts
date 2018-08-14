@@ -1,4 +1,8 @@
-'use strict';
+import Engine from '@ember/engine';
+
+export default class CoreApplication extends Engine {
+
+}
 
 /*
 // import { EMBER_SVELTE_APPLICATION } from '@ember/canary-features';
@@ -68,4 +72,3 @@
 // // FIGURE OUT
 // // what is the action story
 */
-export default {};

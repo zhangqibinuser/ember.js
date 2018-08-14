@@ -1,8 +1,8 @@
 /**
 @module @ember/component
 */
+import { computed } from '@ember/-metal';
 import { hasDOM } from 'ember-browser-environment';
-import { computed } from 'ember-metal';
 import { TextSupport } from 'ember-views';
 import Component from '../component';
 import layout from '../templates/empty';

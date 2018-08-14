@@ -1,14 +1,14 @@
 import { RenderingTest, moduleFor } from '../../utils/test-case';
 import { strip } from '../../utils/abstract-test-case';
 import { Component } from '../../utils/helpers';
-import { set } from 'ember-metal';
+import { set } from '@ember/-metal';
 import {
   subscribe as instrumentationSubscribe,
   reset as instrumentationReset,
 } from '@ember/instrumentation';
 import { EMBER_IMPROVED_INSTRUMENTATION } from '@ember/canary-features';
 
-import { Object as EmberObject, A as emberA } from 'ember-runtime';
+import { Object as EmberObject, A as emberA } from '@ember/-runtime';
 
 import { ActionManager } from 'ember-views';
 

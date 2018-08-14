@@ -1,5 +1,5 @@
-import { get } from 'ember-metal';
-import { RSVP } from 'ember-runtime';
+import { get } from '@ember/-metal';
+import { RSVP } from '@ember/-runtime';
 import { Route } from 'ember-routing';
 
 import { QueryParamTestCase, moduleFor } from 'internal-test-helpers';

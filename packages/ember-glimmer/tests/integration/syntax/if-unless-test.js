@@ -1,6 +1,6 @@
 import { Component } from '../../utils/helpers';
-import { A as emberA } from 'ember-runtime';
-import { set } from 'ember-metal';
+import { A as emberA } from '@ember/-runtime';
+import { set } from '@ember/-metal';
 import { strip } from '../../utils/abstract-test-case';
 
 import { RenderingTest, moduleFor } from '../../utils/test-case';

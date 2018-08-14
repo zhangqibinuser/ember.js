@@ -17,6 +17,7 @@ const { stripIndent } = require('common-tags');
 const debugMacros = require('./broccoli/babel/debug-macros');
 const Babel = require('broccoli-babel-transpiler');
 const PackageJSONWriter = require('./broccoli/package-json-writer');
+const Debug = require('broccoli-debug');
 
 const {
   routerES,
@@ -72,16 +73,16 @@ module.exports = function() {
   let es = new MergeTrees([packagesES, dependenciesES, templateCompilerDependenciesES], {
     overwrite: true,
   });
-  let pkgAndTestESInAMD = toNamedAMD(es);
+  let pkgAndTestESInAMD = new Debug(toNamedAMD(es), 'amd:1');
   let emberEnvFlagsDebug = toNamedAMD(buildEmberEnvFlagsES({ DEBUG: true }));
 
-  let pkgAndTestESBundleDebug = concat(
-    new MergeTrees([pkgAndTestESInAMD, loader, nodeModule, emberEnvFlagsDebug]),
-    {
+  let pkgAndTestESBundleDebug = new Debug(
+    concat(new MergeTrees([pkgAndTestESInAMD, loader, nodeModule, emberEnvFlagsDebug]), {
       headerFiles: ['loader.js'],
       inputFiles: ['**/*.js'],
       outputFile: 'ember-all.debug.js',
-    }
+    }),
+    'amd:2'
   );
 
   let babelDebugHelpersES5 = toES5(babelHelpers('debug'), {
@@ -96,30 +97,31 @@ module.exports = function() {
         'ember-browser-environment/lib/**',
         'ember-glimmer/index.js',
         'ember-glimmer/lib/**',
-        'ember-metal/index.js',
-        'ember-metal/lib/**',
       ],
     }),
     rollupPackage(packagesES, 'ember-browser-environment'),
     rollupPackage(packagesES, 'ember-glimmer'),
-    rollupPackage(packagesES, 'ember-metal'),
   ]);
 
   let standalonePackages = new MergeTrees([
     standalonePackage(packagesES, '@ember/-container'),
     standalonePackage(packagesES, '@ember/-env'),
+    standalonePackage(packagesES, '@ember/-metal'),
+    standalonePackage(packagesES, '@ember/-runtime'),
     standalonePackage(packagesES, '@ember/-utils'),
     standalonePackage(packagesES, '@ember/canary-features'),
     standalonePackage(packagesES, '@ember/debug'),
     standalonePackage(packagesES, '@ember/deprecated-features'),
     standalonePackage(packagesES, '@ember/error'),
+    standalonePackage(packagesES, '@ember/object'),
     standalonePackage(packagesES, '@ember/polyfills'),
+    standalonePackage(packagesES, '@ember/runloop'),
     standalonePackage(packagesES, 'ember-browser-environment'),
   ]);
 
   // ES5
-  let packagesES5 = toES5(packagesESRollup);
-  let dependenciesES5 = toES5(dependenciesES);
+  let packagesES5 = new Debug(toES5(packagesESRollup), 'tom:packages-es');
+  let dependenciesES5 = new Debug(toES5(dependenciesES), 'tom:dependencies-es');
   let templateCompilerDependenciesES5 = toES5(templateCompilerDependenciesES);
 
   // Bundling
@@ -160,9 +162,12 @@ module.exports = function() {
     babelDebugHelpersES5,
   ]);
 
-  emberDebugBundle = concatBundle(emberDebugBundle, {
-    outputFile: 'ember.debug.js',
-  });
+  emberDebugBundle = new Debug(
+    concatBundle(emberDebugBundle, {
+      outputFile: 'ember.debug.js',
+    }),
+    'tom:ember.debug.js'
+  );
 
   let emberTestingBundle = new MergeTrees([
     new Funnel(packagesES5, {

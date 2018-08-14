@@ -1,4 +1,4 @@
-import { observer, set, computed } from 'ember-metal';
+import { observer, set, computed } from '@ember/-metal';
 import Controller from '@ember/controller';
 import { ENV } from '@ember/-env';
 import { RenderingTest, moduleFor } from '../../utils/test-case';

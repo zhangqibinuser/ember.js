@@ -1,14 +1,13 @@
 /*globals EmberDev */
-import VERSION from 'ember/version';
-import { ENV, context } from '@ember/-env';
-import { libraries } from 'ember-metal';
+import { ENV, VERSION, context } from '@ember/-env';
+import { libraries } from '@ember/-metal';
 import { getDebugFunction, setDebugFunction } from '@ember/debug';
 import Application from '..';
 import { Router, NoneLocation, Route as EmberRoute } from 'ember-routing';
 import { jQueryDisabled, jQuery } from 'ember-views';
 import { _loaded } from '@ember/application';
 import Controller from '@ember/controller';
-import { Object as EmberObject } from 'ember-runtime';
+import { Object as EmberObject } from '@ember/-runtime';
 import { setTemplates } from 'ember-glimmer';
 import { privatize as P } from '@ember/-container';
 import { assign } from '@ember/polyfills';

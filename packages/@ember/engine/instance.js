@@ -8,7 +8,7 @@ import {
   ContainerProxyMixin,
   RegistryProxyMixin,
   RSVP,
-} from 'ember-runtime';
+} from '@ember/-runtime';
 import { assert } from '@ember/debug';
 import EmberError from '@ember/error';
 import { Registry, privatize as P } from '@ember/-container';

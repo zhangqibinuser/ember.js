@@ -1,5 +1,5 @@
-import { get, set } from 'ember-metal';
-import { A as emberA, ObjectProxy, removeAt } from 'ember-runtime';
+import { get, set } from '@ember/-metal';
+import { A as emberA, ObjectProxy, removeAt } from '@ember/-runtime';
 import { moduleFor, RenderingTest } from '../../utils/test-case';
 import { IfUnlessWithSyntaxTest } from '../../utils/shared-conditional-tests';
 import { strip } from '../../utils/abstract-test-case';

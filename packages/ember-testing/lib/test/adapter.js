@@ -1,4 +1,4 @@
-import { setDispatchOverride } from 'ember-error-handling';
+import { setDispatchOverride } from '@ember/error';
 
 let adapter;
 export function getAdapter() {

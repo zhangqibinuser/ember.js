@@ -1,10 +1,10 @@
 import { assign } from '@ember/polyfills';
 import { moduleFor, RenderingTest, ApplicationTest } from '../../utils/test-case';
 import { strip } from '../../utils/abstract-test-case';
-import { set, Mixin } from 'ember-metal';
+import { set, Mixin } from '@ember/-metal';
 import { Component } from '../../utils/helpers';
 import Controller from '@ember/controller';
-import { Object as EmberObject } from 'ember-runtime';
+import { Object as EmberObject } from '@ember/-runtime';
 import { Route } from 'ember-routing';
 
 function expectSendActionDeprecation(fn) {

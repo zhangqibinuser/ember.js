@@ -1,10 +1,10 @@
 import { getOwner } from '@ember/-container';
+import { get, PROPERTY_DID_CHANGE } from '@ember/-metal';
+import { TargetActionSupport } from '@ember/-runtime';
 import { symbol } from '@ember/-utils';
 import { assert } from '@ember/debug';
 import { DirtyableTag } from '@glimmer/reference';
 import { normalizeProperty, SVG_NAMESPACE } from '@glimmer/runtime';
-import { get, PROPERTY_DID_CHANGE } from 'ember-metal';
-import { TargetActionSupport } from 'ember-runtime';
 import {
   ActionSupport,
   ChildViewsSupport,

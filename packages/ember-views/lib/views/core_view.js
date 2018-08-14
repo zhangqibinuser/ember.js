@@ -1,4 +1,4 @@
-import { ActionHandler, Evented, FrameworkObject } from 'ember-runtime';
+import { ActionHandler, Evented, FrameworkObject } from '@ember/-runtime';
 import { initViewElement } from '../system/utils';
 import { cloneStates, states } from './states';
 

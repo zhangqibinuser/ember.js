@@ -1,4 +1,4 @@
-import { get } from 'ember-metal';
+import { get } from '@ember/-metal';
 import ControllerMixin from '@ember/controller/lib/controller_mixin';
 import { prefixRouteNameArg } from '../utils';
 

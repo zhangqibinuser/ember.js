@@ -1,6 +1,6 @@
 import { Route } from 'ember-routing';
-import { computed } from 'ember-metal';
-import { Object as EmberObject, A as emberA } from 'ember-runtime';
+import { computed } from '@ember/-metal';
+import { Object as EmberObject, A as emberA } from '@ember/-runtime';
 
 import { moduleFor, ApplicationTestCase } from 'internal-test-helpers';
 

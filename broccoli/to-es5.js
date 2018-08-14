@@ -21,6 +21,12 @@ module.exports = function toES5(tree, _options) {
   options.moduleIds = true;
   options.resolveModuleSource = resolveModuleSource;
   options.sourceMap = true;
+  options.getModuleId = function(moduleName) {
+    if (moduleName.match(/backburner/)) {
+      return 'backburner.js';
+    }
+  };
+
   options.plugins = [
     injectBabelHelpers,
     [

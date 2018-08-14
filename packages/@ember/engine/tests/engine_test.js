@@ -1,7 +1,7 @@
 import { context } from '@ember/-env';
 import { run } from '@ember/runloop';
 import Engine from '@ember/engine';
-import { Object as EmberObject } from 'ember-runtime';
+import { Object as EmberObject } from '@ember/-runtime';
 import { privatize as P } from '@ember/-container';
 import {
   moduleFor,

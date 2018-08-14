@@ -1,5 +1,6 @@
 import { getOwner, privatize as P } from '@ember/-container';
 import { ENV } from '@ember/-env';
+import { get } from '@ember/-metal';
 import { guidFor } from '@ember/-utils';
 import { assert, deprecate } from '@ember/debug';
 import { POSITIONAL_PARAM_CONFLICT } from '@ember/deprecated-features';
@@ -27,7 +28,6 @@ import {
   WithStaticLayout,
 } from '@glimmer/runtime';
 import { Destroyable, EMPTY_ARRAY } from '@glimmer/util';
-import { get } from 'ember-metal';
 import { addChildView, OwnedTemplateMeta, setViewElement } from 'ember-views';
 import { BOUNDS, DIRTY_TAG, HAS_BLOCK, IS_DISPATCHING_ATTRS, ROOT_REF } from '../component';
 import Environment from '../environment';

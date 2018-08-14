@@ -1,7 +1,7 @@
 import { bind } from '@ember/runloop';
-import { get, set } from 'ember-metal';
+import { get, set } from '@ember/-metal';
 
-import { Object as EmberObject } from 'ember-runtime';
+import { Object as EmberObject } from '@ember/-runtime';
 import EmberLocation from './api';
 
 /**

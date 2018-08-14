@@ -7,8 +7,14 @@ import {
   addObserver,
   computed,
   observer,
-} from 'ember-metal';
-import { Object as EmberObject, ObjectProxy, isArray, A as emberA, removeAt } from 'ember-runtime';
+} from '@ember/-metal';
+import {
+  Object as EmberObject,
+  ObjectProxy,
+  isArray,
+  A as emberA,
+  removeAt,
+} from '@ember/-runtime';
 import {
   sum,
   min,

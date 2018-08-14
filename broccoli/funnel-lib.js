@@ -2,6 +2,7 @@
 
 const Funnel = require('broccoli-funnel');
 const findLib = require('./find-lib');
+const Debug = require('broccoli-debug');
 
 module.exports = function funnelLib(name) {
   let libPath, options;
@@ -12,5 +13,5 @@ module.exports = function funnelLib(name) {
     options = arguments[1];
   }
 
-  return new Funnel(findLib(name, libPath), options);
+  return new Debug(new Funnel(findLib(name, libPath), options), `funnel-lib:${name}`);
 };

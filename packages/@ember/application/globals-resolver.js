@@ -3,10 +3,10 @@
 */
 
 import { dictionary } from '@ember/-utils';
-import { get, findNamespace } from 'ember-metal';
+import { get, findNamespace } from '@ember/-metal';
 import { assert, info } from '@ember/debug';
 import { capitalize, classify, dasherize, decamelize } from '@ember/string';
-import { Object as EmberObject } from 'ember-runtime';
+import { Object as EmberObject } from '@ember/-runtime';
 import validateType from './lib/validate-type';
 import { getTemplate } from 'ember-glimmer';
 import { DEBUG } from '@glimmer/env';

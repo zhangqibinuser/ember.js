@@ -1,4 +1,4 @@
-import { Object as EmberObject } from 'ember-runtime';
+import { Object as EmberObject } from '@ember/-runtime';
 
 function K() {
   return this;

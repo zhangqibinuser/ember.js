@@ -2,8 +2,8 @@ import { assign } from '@ember/polyfills';
 import { Component } from '../../utils/helpers';
 import { applyMixins, strip } from '../../utils/abstract-test-case';
 import { moduleFor, RenderingTest } from '../../utils/test-case';
-import { isEmpty } from 'ember-metal';
-import { A as emberA } from 'ember-runtime';
+import { isEmpty } from '@ember/-metal';
+import { A as emberA } from '@ember/-runtime';
 
 moduleFor(
   'Components test: contextual components',

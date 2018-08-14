@@ -1,7 +1,7 @@
 import { assert, deprecate } from '@ember/debug';
-import { onErrorTarget } from 'ember-error-handling';
-import { beginPropertyChanges, endPropertyChanges } from 'ember-metal';
-import Backburner from 'backburner';
+import { onErrorTarget } from '@ember/error';
+import { beginPropertyChanges, endPropertyChanges } from '@ember/-metal';
+import Backburner from 'backburner.js';
 import { RUN_SYNC } from '@ember/deprecated-features';
 
 let currentRunLoop = null;

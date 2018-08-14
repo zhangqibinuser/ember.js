@@ -5,12 +5,12 @@ import { IS_NODE, module } from 'node-module';
 import * as utils from '@ember/-utils';
 import { Registry, Container } from '@ember/-container';
 import * as instrumentation from '@ember/instrumentation';
-import { deleteMeta, meta } from 'ember-meta';
-import * as metal from 'ember-metal';
+import { deleteMeta, meta } from '@ember/-metal';
+import * as metal from '@ember/-metal';
 import { FEATURES, isEnabled } from '@ember/canary-features';
 import * as EmberDebug from '@ember/debug';
 import { assert, deprecate } from '@ember/debug';
-import Backburner from 'backburner';
+import Backburner from 'backburner.js';
 import Logger from 'ember-console';
 import Controller, { inject as injectController } from '@ember/controller';
 import ControllerMixin from '@ember/controller/lib/controller_mixin';
@@ -89,7 +89,7 @@ import {
   CoreObject,
   NativeArray,
   A,
-} from 'ember-runtime';
+} from '@ember/-runtime';
 import {
   Checkbox,
   Component,
@@ -115,7 +115,7 @@ import * as routing from 'ember-routing';
 import * as extensionSupport from 'ember-extension-support';
 import EmberError from '@ember/error';
 import * as runloop from '@ember/runloop';
-import { getOnerror, setOnerror } from 'ember-error-handling';
+import { getOnerror, setOnerror } from '@ember/error';
 import { getOwner, setOwner } from '@ember/-container';
 import Application, { onLoad, runLoadHooks } from '@ember/application';
 import Resolver from '@ember/application/globals-resolver';
@@ -264,7 +264,7 @@ Object.defineProperty(Ember.run, 'currentRunLoop', {
   enumerable: false,
 });
 
-// ****ember-metal****
+// ****@ember/-metal****
 
 // Using _globalsComputed here so that mutating the function is only available
 // in globals builds
@@ -370,7 +370,7 @@ if (LOGGER) {
   Ember.Logger = Logger;
 }
 
-// ****ember-runtime****
+// ****@ember/-runtime****
 Ember.A = A;
 Ember.String = {
   loc,

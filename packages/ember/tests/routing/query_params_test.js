@@ -1,9 +1,9 @@
 import Controller from '@ember/controller';
 import { dasherize } from '@ember/string';
-import { RSVP, Object as EmberObject, A as emberA } from 'ember-runtime';
+import { RSVP, Object as EmberObject, A as emberA } from '@ember/-runtime';
 import { run } from '@ember/runloop';
-import { peekMeta } from 'ember-meta';
-import { get, computed } from 'ember-metal';
+import { peekMeta } from '@ember/-metal';
+import { get, computed } from '@ember/-metal';
 import { Route } from 'ember-routing';
 
 import { QueryParamTestCase, moduleFor, getTextOf } from 'internal-test-helpers';
