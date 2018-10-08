@@ -98,6 +98,17 @@ export const ENV = {
   _TEMPLATE_ONLY_GLIMMER_COMPONENTS: false,
 
   /**
+    Whether to drop default query param values.
+
+    @property _NO_DEFAULT_QUERY_PARAM_VALUES
+    @for EmberENV
+    @type Boolean
+    @default false
+    @private
+  */
+  _NO_DEFAULT_QUERY_PARAM_VALUES: false,
+
+  /**
     Whether the app is using jQuery. See RFC #294.
 
     This is not intended to be set directly, as the implementation may change in

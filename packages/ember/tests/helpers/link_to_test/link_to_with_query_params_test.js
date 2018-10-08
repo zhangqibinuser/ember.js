@@ -2,6 +2,7 @@ import Controller from '@ember/controller';
 import { RSVP } from '@ember/-internals/runtime';
 import { Route } from '@ember/-internals/routing';
 import { moduleFor, ApplicationTestCase } from 'internal-test-helpers';
+import { ENV } from '@ember/-internals/environment';
 
 moduleFor(
   'The {{link-to}} helper: invoking with query params',
@@ -266,6 +267,72 @@ moduleFor(
         this.runTask(() => indexController.set('foo', 'YEAH'));
 
         assert.equal(theLink.attr('href'), '/?bar=BORF&foo=lol');
+      });
+    }
+
+    ['@test href updates are no longer bound when unsupplied controller QP props change (ENV._NO_DEFAULT_QUERY_PARAM_VALUES)'](
+      assert
+    ) {
+      ENV._NO_DEFAULT_QUERY_PARAM_VALUES = true;
+      this.addTemplate(
+        'index',
+        `
+      {{#link-to (query-params foo='lol') id='the-link'}}Index{{/link-to}}
+    `
+      );
+
+      return this.visit('/').then(() => {
+        let indexController = this.getController('index');
+        let theLink = this.$('#the-link');
+
+        assert.equal(theLink.attr('href'), '/?foo=lol');
+
+        this.runTask(() => indexController.set('bar', 'BORF'));
+
+        assert.equal(theLink.attr('href'), '/?foo=lol');
+
+        this.runTask(() => indexController.set('foo', 'YEAH'));
+
+        assert.equal(theLink.attr('href'), '/?foo=lol');
+        ENV._NO_DEFAULT_QUERY_PARAM_VALUES = false;
+      });
+    }
+
+    ['@test href updates when (query-param) args change (ENV._NO_DEFAULT_QUERY_PARAM_VALUES)'](
+      assert
+    ) {
+      ENV._NO_DEFAULT_QUERY_PARAM_VALUES = true;
+
+      this.add(
+        'controller:index',
+        Controller.extend({
+          queryParams: ['foo', 'bar'],
+          foo: undefined,
+          bar: undefined,
+        })
+      );
+
+      this.addTemplate(
+        'index',
+        `
+      {{#link-to (query-params foo='lol' bar=bar) id='the-link'}}Index{{/link-to}}
+    `
+      );
+
+      return this.visit('/').then(() => {
+        let indexController = this.getController('index');
+        let theLink = this.$('#the-link');
+
+        assert.equal(theLink.attr('href'), '/?foo=lol');
+
+        this.runTask(() => indexController.set('bar', 'BORF'));
+
+        assert.equal(theLink.attr('href'), '/?bar=BORF&foo=lol');
+
+        this.runTask(() => indexController.set('foo', 'YEAH'));
+
+        assert.equal(theLink.attr('href'), '/?bar=BORF&foo=lol');
+        ENV._NO_DEFAULT_QUERY_PARAM_VALUES = false;
       });
     }
 

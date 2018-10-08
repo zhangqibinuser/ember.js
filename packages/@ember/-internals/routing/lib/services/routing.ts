@@ -2,6 +2,7 @@
 @module ember
 */
 
+import { ENV } from '@ember/-internals/environment';
 import { get } from '@ember/-internals/metal';
 import { readOnly } from '@ember/object/computed';
 import { assign } from '@ember/polyfills';
@@ -37,7 +38,12 @@ export default class RoutingService extends Service {
   }
 
   normalizeQueryParams(routeName: string, models: {}[], queryParams: {}) {
-    get(this, 'router')._prepareQueryParams(routeName, models, queryParams);
+    get(this, 'router')._prepareQueryParams(
+      routeName,
+      models,
+      queryParams,
+      ENV._NO_DEFAULT_QUERY_PARAM_VALUES
+    );
   }
 
   generateURL(routeName: string, models: {}[], queryParams: {}) {
@@ -50,7 +56,9 @@ export default class RoutingService extends Service {
     let visibleQueryParams = {};
     if (queryParams) {
       assign(visibleQueryParams, queryParams);
-      this.normalizeQueryParams(routeName, models, visibleQueryParams);
+      if (!ENV._NO_DEFAULT_QUERY_PARAM_VALUES) {
+        this.normalizeQueryParams(routeName, models, visibleQueryParams);
+      }
     }
 
     return router.generate(routeName, ...models, {

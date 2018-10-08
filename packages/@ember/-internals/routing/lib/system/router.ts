@@ -1,3 +1,4 @@
+import { ENV } from '@ember/-internals/environment';
 import { computed, defineProperty, get, set } from '@ember/-internals/metal';
 import { getOwner, Owner } from '@ember/-internals/owner';
 import { A as emberA, Evented, Object as EmberObject, typeOf } from '@ember/-internals/runtime';
@@ -680,7 +681,7 @@ class EmberRouter extends EmberObject {
       }' to '${routeName}' but the application instance has already been destroyed.`,
       !this.isDestroying && !this.isDestroyed
     );
-    return this._doTransition(routeName, models, queryParams);
+    return this._doTransition(routeName, models, queryParams, !ENV._NO_DEFAULT_QUERY_PARAM_VALUES);
   }
 
   intermediateTransitionTo(name: string, ...args: any[]) {
@@ -972,7 +973,7 @@ class EmberRouter extends EmberObject {
     _targetRouteName: string,
     models: {}[],
     _queryParams: QueryParam,
-    _keepDefaultQueryParamValues?: boolean
+    _keepDefaultQueryParamValues: boolean
   ) {
     let targetRouteName = _targetRouteName || getActiveTargetName(this._routerMicrolib);
     assert(
@@ -989,7 +990,7 @@ class EmberRouter extends EmberObject {
       targetRouteName,
       models,
       queryParams as QueryParam,
-      !!_keepDefaultQueryParamValues
+      _keepDefaultQueryParamValues
     );
 
     let transition = this._routerMicrolib.transitionTo(targetRouteName, ...models, { queryParams });
@@ -1044,10 +1045,10 @@ class EmberRouter extends EmberObject {
     targetRouteName: string,
     models: {}[],
     queryParams: QueryParam,
-    _fromRouterService?: boolean
+    _fromRouterService: boolean
   ) {
     let state = calculatePostTransitionState(this, targetRouteName, models);
-    this._hydrateUnsuppliedQueryParams(state, queryParams, !!_fromRouterService);
+    this._hydrateUnsuppliedQueryParams(state, queryParams, _fromRouterService);
     this._serializeQueryParams(state.routeInfos, queryParams);
 
     if (!_fromRouterService) {

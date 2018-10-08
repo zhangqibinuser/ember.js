@@ -7,6 +7,7 @@ import { Component } from '@ember/-internals/glimmer';
 import Engine from '@ember/engine';
 import { Route } from '@ember/-internals/routing';
 import { next } from '@ember/runloop';
+import { ENV } from '@ember/-internals/environment';
 
 moduleFor(
   'Application test: engine rendering',
@@ -868,13 +869,38 @@ moduleFor(
 
       return this.visit('/blog/author/1?official=true').then(() => {
         let suffix1 = '/blog/author/1?official=true';
-        let href1 = this.element.querySelector('.author-1').href;
         let suffix1337 = '/blog/author/1337';
+        let href1 = this.element.querySelector('.author-1').href;
         let href1337 = this.element.querySelector('.author-1337').href;
 
         // check if link ends with the suffix
         assert.ok(this.stringsEndWith(href1, suffix1), `${href1} ends with ${suffix1}`);
         assert.ok(this.stringsEndWith(href1337, suffix1337), `${href1337} ends with ${suffix1337}`);
+      });
+    }
+
+    ['@test query params in customized controllerName have stickiness by default between model (ENV._NO_DEFAULT_QUERY_PARAM_VALUES = true)'](
+      assert
+    ) {
+      assert.expect(2);
+      ENV._NO_DEFAULT_QUERY_PARAM_VALUES = true;
+      let tmpl =
+        '{{#link-to "blog.author" 1337 class="author-1337"}}Author 1337{{/link-to}}{{#link-to "blog.author" 1 class="author-1"}}Author 1{{/link-to}}';
+      this.setupAppAndRoutableEngine();
+      this.additionalEngineRegistrations(function() {
+        this.register('template:author', compile(tmpl));
+      });
+
+      return this.visit('/blog/author/1?official=true').then(() => {
+        let suffix1 = '/blog/author/1';
+        let suffix1337 = '/blog/author/1337';
+        let href1 = this.element.querySelector('.author-1').href;
+        let href1337 = this.element.querySelector('.author-1337').href;
+
+        // check if link ends with the suffix
+        assert.ok(this.stringsEndWith(href1, suffix1), `${href1} ends with ${suffix1}`);
+        assert.ok(this.stringsEndWith(href1337, suffix1337), `${href1337} ends with ${suffix1337}`);
+        ENV._NO_DEFAULT_QUERY_PARAM_VALUES = false;
       });
     }
 
